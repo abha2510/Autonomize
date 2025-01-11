@@ -5,9 +5,11 @@ const axios = require('axios');
 
 userRouter.post('/users/:username', async (req, res) => {
     const { username } = req.params;
-
+   console.log(username);
+   
     try {
         let user = await UserModel.findOne({ username });
+        console.log("user",user);
         if (user) {
             return res.status(200).json({ message: 'User already exists in the database' });
         }
@@ -23,8 +25,12 @@ userRouter.post('/users/:username', async (req, res) => {
 
 const fetchGitHubData = async (username) => {
     const url = `https://api.github.com/users/${username}`;
+    console.log("ulr",url,username);
+    
     try {
         const response = await axios.get(url);
+        console.log("response",response);
+        
         return response.data;
     } catch (error) {
         throw new Error('Error fetching GitHub data');
