@@ -28,7 +28,11 @@ const fetchGitHubData = async (username) => {
     console.log("ulr",url,username);
     
     try {
-        const response = await axios.get(url);
+        // const response = await axios.get(url);
+        console.log("before fetch api call")
+        const response = await axios.get(url, { timeout: 10000 } ,{
+            headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+        });
         console.log("response",response);
         
         return response.data;
@@ -37,7 +41,7 @@ const fetchGitHubData = async (username) => {
     }
 };
 
-
+// For fetching all users
 userRouter.get('/users', async (req, res) => {
     try {
         const users = await UserModel.find();
@@ -46,6 +50,8 @@ userRouter.get('/users', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+// User update request
 userRouter.patch('/users/:username', async (req, res) => {
     const { username } = req.params;
     const { location, blog, bio } = req.body; 
