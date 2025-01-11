@@ -1,4 +1,4 @@
-const BASE_URL = 'http://20.191.154.156:8081'; 
+const BASE_URL = 'https://www.khaliqansari.live'; 
 
 export const fetchUserData = async (username) => {
   const response = await fetch(`${BASE_URL}/users/${username}`);
