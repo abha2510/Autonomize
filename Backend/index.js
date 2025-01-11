@@ -3,6 +3,7 @@ const cors= require('cors');
 require("dotenv").config();
 const {connection}= require("./db");
 const { userRouter } = require('./Routes/UserRoute');
+const axios = require('axios');
 
 const app = express();
 app.use(express.json());
