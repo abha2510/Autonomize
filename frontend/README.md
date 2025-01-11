@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# GitHub User Search Application
+### Overview
+The GitHub User Search Application is a simple React-based project that allows users to search for GitHub profiles by username. The app fetches and displays user information, including their bio, avatar, and a button to view followers. It also provides an interactive user interface.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Features
+* Search GitHub Users: Enter a GitHub username to search for a user profile.
+  
+* Display User Information: View user details, such as their name, bio, and avatar.
+  
+* Followers List: Navigate to view the list of followers of the selected user.
 
-## Available Scripts
+### Tech Stack
 
-In the project directory, you can run:
+#### 1. Frontend
 
-### `npm start`
+* Frontend: React.js
+  
+* Styling: CSS for custom styles
+  
+* API: GitHub REST API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2.Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Framework: Express.js
 
-### `npm test`
+* Database: MongoDB
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Other Tools: Mongoose, dotenv for environment variables, CORS for cross-origin requests
 
-### `npm run build`
+##### Components
+1. Search Form: Allows the user to input a GitHub username and trigger the search functionality.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. User Data Display: Displays user information such as name, bio, and avatar. Includes a button to view the user's followers.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Followers List: A separate page that shows a grid of the user's followers with their avatars and usernames.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Usage
 
-### `npm run eject`
+* Enter a GitHub username in the input field.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  ![image](https://github.com/user-attachments/assets/0106994a-7a6b-4e3d-ad0f-22ac763a11fd)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Click the Search button to fetch and display user data.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ![image](https://github.com/user-attachments/assets/5134e886-1cd2-480e-848f-20e35684fb3c)
 
-## Learn More
+  ![image](https://github.com/user-attachments/assets/c0844a22-b466-48c8-9c52-a0cfabb5839b)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Click the View Followers button to see a grid of followers.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ![image](https://github.com/user-attachments/assets/d750363b-b2df-4795-8742-97634b01f2ed)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

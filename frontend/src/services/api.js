@@ -1,4 +1,4 @@
-const BASE_URL = 'https://autonomize-jum3.onrender.com'; 
+const BASE_URL = 'http://20.191.154.156:8081'; 
 
 export const fetchUserData = async (username) => {
   const response = await fetch(`${BASE_URL}/users/${username}`);
