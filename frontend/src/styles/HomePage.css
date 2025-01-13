@@ -89,3 +89,124 @@
     display: flex;
     justify-content: center;
   }
+
+  .user-data {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-left {
+    margin-right: 20px;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-right {
+    flex-grow: 1;
+    position: relative;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.profile-right p {
+    margin: 5px 0;
+    color: #6c757d;
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background: #0056b3;
+}
+
+.profile-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-blog{
+  display: flex;
+
+}
+.profile-bio p{
+  width: 83%;
+  text-align: left;
+}
+.profile-bio h3,
+.profile-blog h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.followers-button {
+    margin-top: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.followers-button:hover {
+    background: #218838;
+}
+.delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
