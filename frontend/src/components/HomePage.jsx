@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveUser, fetchRepos, updateUser, fetchUser, deleteUser } from '../services/api';
 import RepoList from './RepoList';
@@ -16,7 +16,17 @@ const HomePage = () => {
     const navigate = useNavigate();
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-    const handleSearch = async () => {
+    useEffect(() => {
+        if (state.userData) {
+            setLocation(state.userData.location || '');
+            setBlog(state.userData.blog || '');
+            setBio(state.userData.bio || '');
+        }
+    }, [state.userData]);  
+    
+
+    const handleSearch = async (e) => {
+        e.preventDefault(); 
         try {
             const userResponse = await saveUser(username);
             if (userResponse) {
@@ -43,32 +53,33 @@ const HomePage = () => {
         setIsModalOpen(true);
     };
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (e) => {
+        e.preventDefault();
         try {
-            await updateUser(username, { location, blog, bio });
+            const updateResponse = await updateUser(username, { location, blog, bio });;
+    
             const updatedUserData = await fetchUser(username);
-            alert('Updated user data successfully');
-            setIsModalOpen(false);
             if (updatedUserData) {
                 dispatch({ type: 'SET_USER_DATA', payload: updatedUserData });
             }
-
-            setIsModalOpen(false);
+    
+            setIsModalOpen(false);  
         } catch (error) {
             console.error('Error updating user:', error);
         }
     };
+    
     const openDeleteModal = () => {
         setIsDeleteModalOpen(true);
     };
 
-
     const handleDelete = async () => {
         try {
-           await deleteUser(username); 
-            alert('User deleted successfully')
+            const deleteResponse = await deleteUser(username); 
+            console.log('User deleted:', deleteResponse);
+            alert('User deleted successfully');
             setIsDeleteModalOpen(false);
-           window.location.reload();
+            window.location.reload();
         } catch (error) {
             console.error('Error deleting user:', error);
         }
