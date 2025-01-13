@@ -5,11 +5,9 @@ const axios = require('axios');
 
 userRouter.post('/users/:username', async (req, res) => {
     const { username } = req.params;
-   console.log(username);
-   
+
     try {
         let user = await UserModel.findOne({ username });
-        console.log("user",user);
         if (user) {
             return res.status(200).json({ message: 'User already exists in the database' });
         }
@@ -25,33 +23,34 @@ userRouter.post('/users/:username', async (req, res) => {
 
 const fetchGitHubData = async (username) => {
     const url = `https://api.github.com/users/${username}`;
-    console.log("ulr",url,username);
-    
+
     try {
-        // const response = await axios.get(url);
         console.log("before fetch api call")
         const response = await axios.get(url, { timeout: 10000 } ,{
             headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
         });
-        console.log("response",response);
-        
         return response.data;
     } catch (error) {
         throw new Error('Error fetching GitHub data');
     }
 };
 
-// For fetching all users
-userRouter.get('/users', async (req, res) => {
-    try {
-        const users = await UserModel.find();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
-// User update request
+userRouter.get('/users/:username', async (req, res) => {
+    const { username } = req.params;
+  
+    try {
+      const user = await UserModel.findOne({ username });
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
 userRouter.patch('/users/:username', async (req, res) => {
     const { username } = req.params;
     const { location, blog, bio } = req.body; 
@@ -111,5 +110,20 @@ const fetchFollowersAndFollowing = async (username) => {
         throw new Error('Error fetching followers or following');
     }
 };
+userRouter.delete('/users/:username', async (req, res) => {
+    const { username } = req.params;
+
+    try {
+        const user = await UserModel.findOneAndDelete({ username });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'User soft deleted successfully', user });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 module.exports = { userRouter }
