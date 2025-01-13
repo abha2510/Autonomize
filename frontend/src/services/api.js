@@ -1,5 +1,5 @@
-// const BASE_URL = 'https://www.khaliqansari.live'; 
-const BASE_URL='http://localhost:8081'
+const BASE_URL = 'https://www.khaliqansari.live'; 
+// const BASE_URL='http://localhost:8081'
 
 export const fetchUserData = async (username) => {
   const response = await fetch(`${BASE_URL}/users/${username}`);
